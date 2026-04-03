@@ -4,15 +4,15 @@
 **Difficulty Level:** Advanced
 
 ## Project Overview
-This project is a Python simulator for a five stage CPU pipeline. The main goal is to show how a processor executes assembly instructions in each clock cycle. It specifically focuses on detecting and handling read after write data hazards by using pipeline stalling and internal forwarding logic.
+This project is an object-oriented Python simulator for a five stage CPU pipeline. The main goal is to show how a processor executes assembly instructions in each clock cycle. It specifically focuses on detecting and handling read after write data hazards by using pipeline stalling and internal forwarding logic.
 
-I chose this project to connect theoretical computer architecture with practical software engineering. Building this simulator helped me demonstrate complex data structures, search algorithms, and solid error handling.
+I chose this project to connect theoretical computer architecture with practical software engineering. Building this simulator helped me demonstrate complex data structuring, algorithmic search implementations, and solid error handling in Python.
 
 ## Key Features
 * **Instruction Parsing:** Converts raw text into structured dictionaries to keep track of registers easily.
-* **File Input Safety:** Includes strict error checking to stop the program from crashing if a file is missing or if the instruction syntax is wrong.
+* **File Input Safety:** Includes strict try-except error checking to stop the program from crashing if a file is missing or if the instruction syntax is wrong.
 * **Pipeline Engine:** Simulates the five standard stages (Instruction Fetch, Instruction Decode, Execute, Memory Access, and Writeback) in exact chronological order.
-* **Hazard Detection:** Actively scans the active stages to find data dependencies between instructions and injects STALL bubbles to prevent data corruption.
+* **Hazard Detection Algorithm:** Actively scans the active stages to find data dependencies between instructions and injects STALL bubbles to prevent data corruption.
 * **Hardware Optimization:** Implements internal forwarding. This allows the decode stage to read a register in the exact same cycle it gets updated, which significantly reduces unnecessary stalls.
 * **Data Visualization:** Uses the matplotlib library to show a bar chart comparing ideal performance with the actual clock cycles taken.
 
@@ -38,9 +38,3 @@ ADD R1, R2, R3
 SUB R4, R1, R5
 LOAD R6, 100(R2)
 STORE R6, 200(R4)
-
-## Assessment Criteria Met
-* **Complex Data Structures:** Used lists of nested dictionaries to maintain the pipeline state and parse instructions.
-* **Algorithms:** Wrote a custom search algorithm to look ahead in the pipeline to find matching destination and source registers.
-* **Error Handling:** Used try and except blocks to handle bad text formatting and missing files gracefully.
-* **Code Quality:** Applied object oriented programming by keeping the simulator state securely inside its own class.
