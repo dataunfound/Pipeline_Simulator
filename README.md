@@ -4,33 +4,33 @@
 **Difficulty Level:** Advanced
 
 ## Project Overview
-This project is a terminal-based, 5-stage CPU Pipeline Simulator built with Python. Its primary purpose is to simulate how a processor executes assembly instructions cycle-by-cycle and, more importantly, how it detects and handles Read-After-Write (RAW) data hazards using pipeline stalling and internal forwarding logic.
+This project is a Python simulator for a five stage CPU pipeline. The main goal is to show how a processor executes assembly instructions in each clock cycle. It specifically focuses on detecting and handling read after write data hazards by using pipeline stalling and internal forwarding logic.
 
-I chose this project to bridge the gap between theoretical computer architecture and practical software engineering. By building this simulator, I aimed to demonstrate complex data structuring, algorithmic search implementations, and robust error handling.
+I chose this project to connect theoretical computer architecture with practical software engineering. Building this simulator helped me demonstrate complex data structures, search algorithms, and solid error handling.
 
 ## Key Features
-* **Instruction Parsing:** Converts raw text strings into structured dictionaries for precise register tracking.
-* **Robust File I/O:** Includes comprehensive error checking to prevent crashes from missing files or malformed instruction syntax.
-* **5-Stage Pipeline Engine:** Simulates the Fetch (IF), Decode (ID), Execute (EX), Memory (MEM), and Write-back (WB) stages in strict chronological order.
-* **Hazard Detection Algorithm:** Actively scans the pipeline to detect data dependencies between adjacent instructions (RAW hazards) and injects 'STALL' bubbles to prevent data corruption.
-* **Hardware Optimization:** Implements "Internal Forwarding" by allowing the Decode stage to read a register in the same cycle the Write-back stage updates it, reducing unnecessary stalls.
-* **Data Visualization:** Uses `matplotlib` to generate a comparative bar chart showing ideal vs. actual clock cycles.
+* **Instruction Parsing:** Converts raw text into structured dictionaries to keep track of registers easily.
+* **File Input Safety:** Includes strict error checking to stop the program from crashing if a file is missing or if the instruction syntax is wrong.
+* **Pipeline Engine:** Simulates the five standard stages (Instruction Fetch, Instruction Decode, Execute, Memory Access, and Writeback) in exact chronological order.
+* **Hazard Detection:** Actively scans the active stages to find data dependencies between instructions and injects STALL bubbles to prevent data corruption.
+* **Hardware Optimization:** Implements internal forwarding. This allows the decode stage to read a register in the exact same cycle it gets updated, which significantly reduces unnecessary stalls.
+* **Data Visualization:** Uses the matplotlib library to show a bar chart comparing ideal performance with the actual clock cycles taken.
 
 ## Prerequisites
-To run this simulator, you need Python 3 installed on your system, along with the `matplotlib` library for data visualization.
+You need Python 3 installed on your system. The project also requires the matplotlib library to draw the performance charts.
 
-You can install the required library using:
+You can install the required library by typing this in your terminal:
 `pip install matplotlib`
 
 ## How to Run
-1. Ensure your assembly instructions are saved in a file named `instructions.txt` in the same directory as the script.
-2. Open your terminal or command prompt.
-3. Run the main script:
+1. Make sure your assembly instructions are saved in a file named `instructions.txt` in the exact same folder as the script.
+2. Open your command line or terminal.
+3. Run the script:
    `python main.py`
-4. The terminal will output the cycle-by-cycle simulation. Once finished, a window will pop up displaying the performance analysis chart.
+4. The terminal will print the simulation step by step. When it finishes, a window will automatically open to show the performance analysis chart.
 
-## Input Format (`instructions.txt`)
-The simulator accepts standard assembly instructions. It currently supports basic Arithmetic and Memory Access commands. Empty lines and comments (starting with `#`) are safely ignored.
+## Input Format (instructions.txt)
+The simulator reads standard assembly instructions. Right now it supports basic arithmetic and memory access commands. It safely ignores empty lines and comments that start with a # symbol.
 
 **Example Input:**
 # Basic dependency test
@@ -40,7 +40,7 @@ LOAD R6, 100(R2)
 STORE R6, 200(R4)
 
 ## Assessment Criteria Met
-* **Complex Data Structures:** Used lists of nested dictionaries to maintain the state of the pipeline and parsed instructions.
-* **Algorithms:** Developed a custom searching algorithm to look ahead in the pipeline stages for matching destination/source registers.
-* **Error Handling:** Implemented `try-except` blocks to handle malformed strings and missing files gracefully without crashing the main loop.
-* **Code Quality:** Used Object-Oriented Programming (OOP) principles by encapsulating the simulator state within a class.
+* **Complex Data Structures:** Used lists of nested dictionaries to maintain the pipeline state and parse instructions.
+* **Algorithms:** Wrote a custom search algorithm to look ahead in the pipeline to find matching destination and source registers.
+* **Error Handling:** Used try and except blocks to handle bad text formatting and missing files gracefully.
+* **Code Quality:** Applied object oriented programming by keeping the simulator state securely inside its own class.
