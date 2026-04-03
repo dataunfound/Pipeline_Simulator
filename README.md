@@ -10,9 +10,9 @@ This project is an object-oriented Python simulator for a five-stage CPU pipelin
 I chose this project to connect theoretical computer architecture with practical software engineering. Building this simulator helped me demonstrate complex data structuring, algorithmic search implementations, and solid error handling in Python.
 
 ## Key Features
-* **Instruction Parsing:** Converts raw text into structured dictionaries to keep track of registers easily.
-* **File Input Safety:** Includes strict try-except error checking to stop the program from crashing if a file is missing or if the instruction syntax is wrong.
-* **Pipeline Engine:** Simulates the five standard stages (Instruction Fetch, Instruction Decode, Execute, Memory Access, and Writeback) in exact chronological order.
+* **Smart Instruction Parsing:** Converts raw text into structured dictionaries. It is fully case-insensitive (e.g., `add` and `ADD` work the same) to provide a better user experience.
+* **File Input Safety:** Includes strict try-except error checking to stop the program from crashing if a file is missing, empty, or if the instruction syntax is wrong.
+* **Pipeline Engine:** Simulates the five standard stages (Instruction Fetch, Instruction Decode, Execute, Memory Access, and Writeback) in exact chronological order, including proper final cycle flushing.
 * **Smart Hazard Detection:** Actively scans the active stages to find data dependencies. When a hazard is found, it injects a STALL bubble and dynamically reports exactly which register caused the delay (e.g., `STALL (Wait R1)`).
 * **Hardware Optimization:** Implements internal forwarding. This allows the decode stage to read a register in the exact same cycle it gets updated, which significantly reduces unnecessary stalls.
 * **Rich UX & Data Visualization:** Features a color-coded terminal interface for clear cycle tracking, and uses the `matplotlib` library to show a final bar chart comparing ideal performance with the actual clock cycles taken.
@@ -31,12 +31,16 @@ You can install the required library by typing this in your terminal:
 4. The terminal will print the simulation step by step with color coding. When it finishes, a window will automatically open to show the performance analysis chart.
 
 ## Input Format (instructions.txt)
-The simulator reads standard assembly instructions. Right now it supports basic arithmetic and memory access commands. It safely ignores empty lines and comments that start with a `#` symbol.
+The simulator reads standard assembly instructions. It safely ignores empty lines and comments that start with a `#` symbol. 
+
+Currently, the simulator supports the following 6-core instructions:
+* **Arithmetic:** `ADD`, `SUB`, `MUL`, `DIV` (Format: OPCODE DEST, SRC1, SRC2)
+* **Memory:** `LOAD`, `STORE` (Format: OPCODE REG, IMM(REG))
 
 **Example Input:**
 ```text
 # Basic dependency test
-ADD R1, R2, R3
+add R1, R2, R3
 SUB R4, R1, R5
 LOAD R6, 100(R2)
 STORE R6, 200(R4)
