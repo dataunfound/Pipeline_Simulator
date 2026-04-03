@@ -1,6 +1,7 @@
 # Pipeline Hazard Simulator
 
 **Course:** IY499 Independent Project
+
 **Difficulty Level:** Advanced
 
 ## Project Overview
