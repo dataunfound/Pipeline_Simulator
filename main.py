@@ -2,6 +2,9 @@ import os
 import sys
 import matplotlib.pyplot as plt
 
+#GitHub: https://github.com/dataunfound
+#Repository: https://github.com/dataunfound/Pipeline_Simulator
+
 # Added ANSI color codes to make the terminal output easier to read, 
 # especially for spotting STALL states visually.
 class Colors:
